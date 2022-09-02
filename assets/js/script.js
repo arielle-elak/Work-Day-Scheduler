@@ -7,15 +7,15 @@
 
 
 var eventsObj = {
-    "9am": "",
-    "10am": "",
-    "11am": "",
-    "12pm": "",
-    "1pm": "",
-    "2pm": "",
-    "3pm": "",
-    "4pm": "",
-    "5pm": "",
+    "9am": '',
+    "10am": '',
+    "11am": '',
+    "12pm": '',
+    "1pm": '',
+    "2pm": '',
+    "3pm": '',
+    "4pm": '',
+    "5pm": '',
 };
 
 /**
@@ -25,14 +25,20 @@ var eventsObj = {
 $(function () {
     var eventsArr = JSON.parse(localStorage.getItem("eventsObj")) || [];
     console.log("Retreived eventsObj from localStorage" + eventsArr);
+    // On page load - display current day at the top of the calendar
+    var currentDay = moment().format("dddd, MMMM Do, YYYY");
+    $("#currentDay").text(currentDay);
+
+    // For each event in the eventsArr, console log each key/value pair
+    for (const key in eventsArr) {
+        if (eventsArr.hasOwnProperty(key)) {
+            console.log(`${key}: ${localStorage.getItem(key)}`);
+        }
+    };
+
 });
 
 // !TODO: Generate rows for each hour
-for (const key in eventsObj) {
-    if (eventsObj.hasOwnProperty(key)) {
-        console.log(`${key}: ${eventsObj.getItem(key)}`);
-    }
-};
 
 
 
@@ -56,9 +62,6 @@ var eventsObj = {
 };
 
 
-// On page load - display current day at the top of the calendar
-var currentDay = moment().format("dddd, MMMM Do, YYYY");
-$("#currentDay").text(currentDay);
 
 // !TODO: Display timeblocks for standard business hours 9am - 5pm by the hour
 
