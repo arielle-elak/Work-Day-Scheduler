@@ -6,6 +6,12 @@
  */
 
 // !TODO: On page load - display current day at the top of the calendar
+var currentDay = moment().format("dddd, MMMM Do, YYYY");
+$("#currentDay").text(currentDay);
+
+
+
+
 
 // !TODO: Display timeblocks for standard business hours 9am - 5pm by the hour
 
