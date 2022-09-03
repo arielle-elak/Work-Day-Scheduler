@@ -5,40 +5,31 @@
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
-var container = $(".container");
-
-
-
-var initialEventsArr = [
+// Basic empty schedule
+events = [
   {
-    slot: "9am",
-    descriptionText: ""
+    slot: "9am", text: "Nothing planned"
   }, {
-    slot: "10am",
-    descriptionText: ""
+    slot: "10am", text: "Nothing planned"
   }, {
-    slot: "11am",
-    descriptionText: ""
+    slot: "11am", text: "Nothing planned"
   }, {
-    slot: "12pm",
-    descriptionText: ""
+    slot: "12pm", text: "Nothing planned"
   }, {
-    slot: "1pm",
-    descriptionText: ""
+    slot: "1pm", text: "Nothing planned"
   }, {
-    slot: "2pm",
-    descriptionText: ""
+    slot: "2pm", text: "Nothing planned"
   }, {
-    slot: "3pm",
-    descriptionText: ""
+    slot: "3pm", text: "Nothing planned"
   }, {
-    slot: "4pm",
-    descriptionText: ""
+    slot: "4pm", text: "Nothing planned"
   }, {
-    slot: "5pm",
-    descriptionText: ""
+    slot: "5pm", text: "Nothing planned"
   }
 ];
+
+var containerEl = (".container");
+
 
 
 /*
@@ -52,70 +43,27 @@ $(function () {
   var currentDay = moment().format("dddd, MMMM Do, YYYY");
   $("#currentDay").text(currentDay);
 
-  // Also, see if there is an eventsObj in local storage. If not, create empty array eventsArr
-  // Then fill the empty array with the default values from initialEventsArr
-  var eventsArr = JSON.parse(localStorage.getItem("eventsObj")) || [];
-
-  if (eventsArr = []) {
-    console.log("No eventsObj detected: Emtpy eventsArr created.");
-    eventsArr = initialEventsArr;
-
-  } else {
-    console.log("Retreived eventsObj from localStorage");
-  };
-
-  console.log(eventsArr);
-
-  // Create a new section with the class "time-block" for each entry in eventsArr
-  for (var key in eventsArr) {
-    if (eventsArr.hasOwnProperty(key)) {
-      var sectionEl = $('<section>')
-        .addClass("time-block col-12")
-        .appendTo(container);
-    }; // END if
-  }; // END for
-
-  // Create sub-elements within each section
-
-  var rowEl = $('<div>')
-    .appendTo(".time-block")
-    .addClass("row");
-
-  var hourEl = $('<div>')
-    .appendTo(".row")
-    .addClass("hour col-2 col-md-2 col-lg-2")
-    .text();
-
-  var descriptionEl = $('<div>')
-    .appendTo(".row")
-    .addClass("description col-8 col-md-9 col-lg-9")
-    .text();
-
-  var btnEl = $('<button><i class="fa fa-save"></i></button>')
-    .appendTo(".row")
-    .addClass("saveBtn col-2 col-md-1 col-lg-1");
-
-  // Append id to each set of elements in a section
-
-  var $div = $(".time-block");
-  $div.attr('id', function (id) {
-    return id;
+  // Variables for each element type - create and append
+  $.each(events, function( key, obj ) {
+    console.log(obj.slot);
+    console.log(obj.text);
   });
 
-  var $div = $(".hour");
-  $div.attr('id', function (id) {
-      return id;
+
+  jQuery.each(events, function (i, obj) {
+    console.log(i);
+
+    var sectionEl = $('<section>').addClass("time-block col-12").appendTo(containerEl).attr('id', i);
+    var rowEl = $('<div>').addClass("row").appendTo(sectionEl).attr('id', i);
+    var hourEl = $('<div>').addClass("hour col-2 col-md-2 col-lg-2").appendTo(rowEl).attr('id', i).text(obj.slot);
+    var descriptionEl = $('<div>').addClass("description col-8 col-md-9 col-lg-9").appendTo(rowEl).attr('id', i);
+    var btnEl = $('<button><i class="fa fa-save"></i></button>').addClass("saveBtn col-2 col-md-1 col-lg-1").appendTo(rowEl).attr('id', i);
   });
 
-  var $div = $(".description");
-  $div.attr('id', function (id) {
-      return id;
-  });
 
-  var $div = $(".saveBtn");
-  $div.attr('id', function (id) {
-      return id;
-  });
+
+
+}); // END ON PAGE LOAD FUNCTION
 
 
   /** TODO: Use the index of the object entry to populate the text of each hour and description div
@@ -135,7 +83,7 @@ $(function () {
 
 
 
-}); // END ON PAGE LOAD FUNCTION
+
 
 
 // Write the current contents of eventsObj to local storage
