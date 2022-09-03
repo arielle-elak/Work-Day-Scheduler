@@ -23,18 +23,34 @@ var eventsObj = {
  * If nothing exists, create an empty array for eventsArr
  */
 $(function () {
-    var eventsArr = JSON.parse(localStorage.getItem("eventsObj")) || [];
-    console.log("Retreived eventsObj from localStorage" + eventsArr);
-    // On page load - display current day at the top of the calendar
-    var currentDay = moment().format("dddd, MMMM Do, YYYY");
-    $("#currentDay").text(currentDay);
+  var eventsArr = JSON.parse(localStorage.getItem("eventsObj")) || [];
+  console.log("Retreived eventsObj from localStorage");
+  // On page load - display current day at the top of the calendar
+  var currentDay = moment().format("dddd, MMMM Do, YYYY");
+  $("#currentDay").text(currentDay);
 
-    // For each event in the eventsArr, console log each key/value pair
-    for (const key in eventsArr) {
-        if (eventsArr.hasOwnProperty(key)) {
-            console.log(`${key}: ${localStorage.getItem(key)}`);
-        }
-    };
+  // For each event in the eventsArr, console log each key/value pair
+  for (const key in eventsArr) {
+    if (eventsArr.hasOwnProperty(key)) {
+      console.log(`${key}: ${localStorage.getItem(key)}`);
+      // <section class="time-block">
+      $('<section>').appendTo(".container").addClass("time-block");
+        // <div class="row" id="9am">
+          // <div class="hour col-2 col-md-2 col-lg-2">
+            // 9AM
+          // </div>
+          // <div class="description col-8 col-md-9 col-lg-9 past">
+            // Morning Meeting
+          // </div>
+          // <button class="saveBtn col-2 col-md-1 col-lg-1">
+            // <i class="fa fa-save"></i>
+          // </button>
+          // </div>
+        // </div>
+      // </section>
+
+    }
+  };
 
 });
 
@@ -89,20 +105,7 @@ function showScheduleRow(hour, description, save) {
 
 
 /*
-<section class="time-block">
-        <div class="row" id="9am">
-          <div class="hour col-2 col-md-2 col-lg-2">
-            9AM
-          </div>
-          <div class="description col-8 col-md-9 col-lg-9 past">
-            Morning Meeting
-          </div>
-          <button class="saveBtn col-2 col-md-1 col-lg-1">
-            <i class="fa fa-save"></i>
-          </button>
-          </div>
-        </div>
-      </section>
+
 */
 
  // !TODO: Generate text based upon the current eventsObj contents
