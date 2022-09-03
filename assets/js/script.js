@@ -33,26 +33,26 @@ $(function () {
   for (const key in eventsArr) {
     if (eventsArr.hasOwnProperty(key)) {
       console.log(`${key}: ${localStorage.getItem(key)}`);
-      // <section class="time-block">
+      // Create a new section with the class "time-block" for each entry in eventsArr
       $('<section>').appendTo(".container").addClass("time-block");
-        // <div class="row" id="9am">
-          // <div class="hour col-2 col-md-2 col-lg-2">
-            // 9AM
-          // </div>
-          // <div class="description col-8 col-md-9 col-lg-9 past">
-            // Morning Meeting
-          // </div>
-          // <button class="saveBtn col-2 col-md-1 col-lg-1">
-            // <i class="fa fa-save"></i>
-          // </button>
-          // </div>
-        // </div>
-      // </section>
+      console.log($(".container").children());
+    }; // END if
+  }; // END for
+  // <div class="row">
+  $('<div>').appendTo(".time-block").addClass("row");
+  // <div class="hour col-2 col-md-2 col-lg-2"> + // !TODO: dynamic id for hour and text content
+  $('<div>').appendTo(".row").addClass("hour", "col-2 col-md-2 col-lg-2");
+  // <div class="description col-8 col-md-9 col-lg-9"> + !TODO: dynamic time background color
+  $('<div>').appendTo(".row").addClass("description", "col-8 col-md-9 col-lg-9");
+  // <button class="saveBtn col-2 col-md-1 col-lg-1">
+  $('<button><i class="fa fa-save"></i></button>').appendTo(".row").addClass("saveBtn", "col-2 col-md-1 col-lg-1");
 
-    }
-  };
 
-});
+
+
+
+
+}); // END ON PAGE LOAD FUNCTION
 
 // !TODO: Generate rows for each hour
 
@@ -63,20 +63,6 @@ $(function () {
 
 // Write the current contents of eventsObj to local storage
 localStorage.setItem('eventsObj', JSON.stringify(eventsObj));
-
-// Empty events object is sent to local storage if no data exists
-var eventsObj = {
-    "9am": "",
-    "10am": "",
-    "11am": "",
-    "12pm": "",
-    "1pm": "",
-    "2pm": "",
-    "3pm": "",
-    "4pm": "",
-    "5pm": "",
-};
-
 
 
 // !TODO: Display timeblocks for standard business hours 9am - 5pm by the hour
