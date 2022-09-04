@@ -6,7 +6,7 @@
  */
 
 // Basic empty schedule
-events = [
+initialEvents = [
   {
     slot: "9am", text: "Nothing planned"
   }, {
@@ -30,6 +30,8 @@ events = [
 
 var containerEl = (".container");
 
+var events;
+
 
 
 /*
@@ -43,51 +45,107 @@ $(function () {
   var currentDay = moment().format("dddd, MMMM Do, YYYY");
   $("#currentDay").text(currentDay);
 
-  // Variables for each element type - create and append
-  $.each(events, function( key, obj ) {
-    console.log(obj.slot);
-    console.log(obj.text);
-  });
+  // Checks to see if events have been saved to local storage
+  // If it exists, parse it and assign it to events
+  // If it doesn't, paste the default data in from initialEvents
+  if (localStorage.getItem('events') !== null) {
+    console.log(`Current events storage exists`);
+    events = JSON.parse( localStorage.getItem( 'events' ) );
 
+  } else {
+    console.log(`Events storage not found. Creating object from initial`);
+    events = initialEvents;
 
+  }; // END if
+
+  console.log(events);
+
+  // Cycle through all current items in events and generate sections and divs with appropriate classes, ids and text content
   jQuery.each(events, function (i, obj) {
-    console.log(i);
 
-    var sectionEl = $('<section>').addClass("time-block col-12").appendTo(containerEl).attr('id', i);
-    var rowEl = $('<div>').addClass("row").appendTo(sectionEl).attr('id', i);
-    var hourEl = $('<div>').addClass("hour col-2 col-md-2 col-lg-2").appendTo(rowEl).attr('id', i).text(obj.slot);
-    var descriptionEl = $('<div>').addClass("description col-8 col-md-9 col-lg-9").appendTo(rowEl).attr('id', i);
-    var btnEl = $('<button><i class="fa fa-save"></i></button>').addClass("saveBtn col-2 col-md-1 col-lg-1").appendTo(rowEl).attr('id', i);
+    var sectionEl = $('<section>')
+      .addClass("time-block col-12")
+      .appendTo(containerEl)
+      .attr('id', i);
+
+    var rowEl = $('<div>')
+      .addClass("row")
+      .appendTo(sectionEl)
+      .attr('id', i);
+
+    var hourEl = $('<div>')
+      .addClass("hour col-2 col-md-2 col-lg-2")
+      .appendTo(rowEl)
+      .attr('id', i)
+      .text(obj.slot);
+
+    var descriptionEl = $('<div>')
+      .addClass("description col-8 col-md-9 col-lg-9")
+      .appendTo(rowEl)
+      .attr('id', i)
+      .text(obj.text);
+
+    var btnEl = $('<button><i class="fa fa-save"></i></button>')
+      .addClass("saveBtn col-2 col-md-1 col-lg-1")
+      .appendTo(rowEl)
+      .attr('id', i)
   });
 
+// Testing out with creating a separate listener for each button
+// !TODO: Create a concise loop for assigning this
 
+  $("#0.saveBtn").click(function () {
+    var btnID = $("#0").attr("id");
+    console.log(btnID);
+  });
+
+  $("#1.saveBtn").click(function () {
+    var btnID = $("#1").attr("id");
+    console.log(btnID);
+  });
+
+  $("#2.saveBtn").click(function () {
+    var btnID = $("#2").attr("id");
+    console.log(btnID);
+  });
+
+  $("#3.saveBtn").click(function () {
+    var btnID = $("#3").attr("id");
+    console.log(btnID);
+  });
+
+  $("#4.saveBtn").click(function () {
+    var btnID = $("#4").attr("id");
+    console.log(btnID);
+  });
+
+  $("#5.saveBtn").click(function () {
+    var btnID = $("#5").attr("id");
+    console.log(btnID);
+  });
+
+  $("#6.saveBtn").click(function () {
+    var btnID = $("#6").attr("id");
+    console.log(btnID);
+  });
+
+  $("#7.saveBtn").click(function () {
+    var btnID = $("#7").attr("id");
+    console.log(btnID);
+  });
+
+  $("#8.saveBtn").click(function () {
+    var btnID = $("#8").attr("id");
+    console.log(btnID);
+  });
 
 
 }); // END ON PAGE LOAD FUNCTION
 
 
-  /** TODO: Use the index of the object entry to populate the text of each hour and description div
-   *
-   * 1) Obtain the index of each item in eventsArr
-   * 2) Obtain the id of each:
-   *    a) hour child of .row
-   *    b) description child of .row
-   * 3) Compare the index of each eventsArr and id of each
-   *    a) hour child
-   *    b) description child
-   * 4) If index = id
-   *    a) Use value of slot: key for text content of hour child
-   *    b) Use value of descriptionText: key for text content of description child
-   */
 
 
 
-
-
-
-
-// Write the current contents of eventsObj to local storage
-// localStorage.setItem('eventsObj', JSON.stringify(eventsObj));
 
 
 /**
