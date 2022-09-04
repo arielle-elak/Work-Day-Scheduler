@@ -54,6 +54,7 @@ $(function () {
   } else {
     console.log(`Events storage not found. Creating object from initial`);
     events = initialEvents;
+    localStorage.setItem("events", JSON.stringify(events));
 
   }; // END if
 
@@ -78,7 +79,7 @@ $(function () {
       .attr('id', i)
       .text(obj.slot);
 
-    var descriptionEl = $('<div>')
+    var descriptionEl = $('<textarea>')
       .addClass("description col-8 col-md-9 col-lg-9")
       .appendTo(rowEl)
       .attr('id', i)
@@ -93,57 +94,84 @@ $(function () {
   // Testing out with creating a separate listener for each button
   // !TODO: Create a concise loop for assigning this
 
+  events = JSON.parse(localStorage.getItem('events'));
+
   $("#0.saveBtn").click(function () {
     var btnID = $("#0").attr("id");
     console.log(btnID);
-    // Set the value at the appropriate index of events with the text content of the description section
-    events[0].val = "New Text";
+
+    var newText = $('textarea#0.description').val();
+    console.log(newText);
+
+    var oldText = events[0].text;
+    console.log(oldText);
+
+    const id = '9am';
+    events.find(v => v.slot === id).text = newText;
+    console.log(events);
+
+    localStorage.setItem('events', JSON.stringify(events));
+
+    // Find the correct entry and change the value
+
   });
+
+
 
   $("#1.saveBtn").click(function () {
     var btnID = $("#1").attr("id");
     console.log(btnID);
+    var text = $('textarea#1.description').val();
+    console.log(text);
   });
 
   $("#2.saveBtn").click(function () {
     var btnID = $("#2").attr("id");
     console.log(btnID);
+    var text = $('textarea#2.description').val();
+    console.log(text);
   });
 
   $("#3.saveBtn").click(function () {
     var btnID = $("#3").attr("id");
     console.log(btnID);
+    var text = $('textarea#3.description').val();
+    console.log(text);
   });
 
   $("#4.saveBtn").click(function () {
     var btnID = $("#4").attr("id");
     console.log(btnID);
+    var text = $('textarea#4.description').val();
+    console.log(text);
   });
 
   $("#5.saveBtn").click(function () {
     var btnID = $("#5").attr("id");
     console.log(btnID);
+    var text = $('textarea#5.description').val();
+    console.log(text);
   });
 
   $("#6.saveBtn").click(function () {
     var btnID = $("#6").attr("id");
     console.log(btnID);
+    var text = $('textarea#6.description').val();
+    console.log(text);
   });
 
   $("#7.saveBtn").click(function () {
     var btnID = $("#7").attr("id");
     console.log(btnID);
+    var text = $('textarea#7.description').val();
+    console.log(text);
   });
 
   $("#8.saveBtn").click(function () {
     var btnID = $("#8").attr("id");
     console.log(btnID);
-  });
-
-  // Convert html element into text input field
-  $('body').on('click', '.description', function () {
-    console.log("Description clicked");
-
+    var text = $('textarea#8.description').val();
+    console.log(text);
   });
 
 }); // END ON PAGE LOAD FUNCTION
