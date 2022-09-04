@@ -29,7 +29,6 @@ initialEvents = [
 ];
 
 var containerEl = (".container");
-
 var events;
 
 
@@ -50,7 +49,7 @@ $(function () {
   // If it doesn't, paste the default data in from initialEvents
   if (localStorage.getItem('events') !== null) {
     console.log(`Current events storage exists`);
-    events = JSON.parse( localStorage.getItem( 'events' ) );
+    events = JSON.parse(localStorage.getItem('events'));
 
   } else {
     console.log(`Events storage not found. Creating object from initial`);
@@ -91,12 +90,14 @@ $(function () {
       .attr('id', i)
   });
 
-// Testing out with creating a separate listener for each button
-// !TODO: Create a concise loop for assigning this
+  // Testing out with creating a separate listener for each button
+  // !TODO: Create a concise loop for assigning this
 
   $("#0.saveBtn").click(function () {
     var btnID = $("#0").attr("id");
     console.log(btnID);
+    // Set the value at the appropriate index of events with the text content of the description section
+    events[0].val = "New Text";
   });
 
   $("#1.saveBtn").click(function () {
@@ -139,6 +140,11 @@ $(function () {
     console.log(btnID);
   });
 
+  // Convert html element into text input field
+  $('body').on('click', '.description', function () {
+    console.log("Description clicked");
+
+  });
 
 }); // END ON PAGE LOAD FUNCTION
 
