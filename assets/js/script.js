@@ -1,7 +1,7 @@
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * Work Day Scheduler JS
- * Last Edited by Arielle Sept 3 2022
+ * Last Edited by Arielle Sept 4 2022
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
@@ -68,7 +68,7 @@ $(function () {
     var sectionEl = $('<section>')
       .addClass("time-block col-12")
       .appendTo(containerEl)
-      .attr('id', i+=9);
+      .attr('id', i += 9);
 
     var rowEl = $('<div>')
       .addClass("row")
@@ -96,9 +96,27 @@ $(function () {
   // Highlight the description area in the appropriate color based on the time of day
   // Format the current time to match what shows in the hour column
   // First calculate the current time in military time (# of hours)
-  var currentTime = moment().format('HH');
-  var timeDescription = $(".description")
-  console.log(currentTime);
+  var momentTime = moment().format("HH");
+  var currentTime = parseInt(momentTime);
+  var timeDescription = $(".description");
+
+  $(".description").each(function () {
+
+    console.log($(this).attr("id")+ " " + currentTime);
+
+    // Test if the id is equal to the current time
+    if($(this).attr("id") == currentTime){
+        $(this).addClass('present');
+    };
+
+    if($(this).attr("id") < currentTime){
+      $(this).addClass('past');
+    };
+
+    if($(this).attr("id") > currentTime){
+      $(this).addClass('future');
+    };
+});
 
 
 
@@ -245,77 +263,6 @@ $(function () {
 
   });
 
-  // Highlight the description area in the appropriate color based on the time of day
-  var time = moment().format("hh:mm:ss");
 
 
 }); // END ON PAGE LOAD FUNCTION
-
-
-
-
-
-
-
-/**
- * !TODO: Timeblock timeframes color coding
- * - Past (< Today) grey
- * - Present (= Today) orange
- * - Future (> Today) green
- */
-
-
-
-// Set up variables for each event section
-
-
- // !TODO: Generate text based upon the current eventsObj contents
-
-
-// !TODO: On click event for each timeblock - space converts to text input
-
-/**
- *!TODO: On click event for save button - the text input is saved to local storage
- * Empty local storage input:
- *
- * eventsObj {};
- *
- * Empty array"
- *
- * eventsArr [];
- *
- * When each event is saved, for the respective timeblock, append to the events object
- *
- * eventsObj {
- *  "9am": "",
- *  "10am": "",
- *  "11am": "",
- *  "12pm": "",
- *  "1pm": "",
- *  "2pm": "",
- *  "3pm": "",
- *  "4pm": "",
- *  "5pm": "",
- * }
- *
- * eventsArr [
- *  {"9am": ""},
- *  {"10am": ""},
- *  {"11am": ""},
- *  {"12pm": ""},
- *  {"1pm": ""},
- *  {"2pm": ""},
- *  {"3pm": ""},
- *  {"4pm": ""},
- *  {"5pm": ""},
- * ]
- *
- * Mock time block structure:
- *
- *
- *
- */
-
- // TODO: Create event listeners for save buttons
-
- // TODO: Create event listener for description click
