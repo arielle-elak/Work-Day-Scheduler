@@ -123,7 +123,7 @@ $(function () {
     var newText = $('textarea#9.description').val();
     console.log(newText);
 
-    const id = '9am';
+    const id = '9AM';
     events.find(v => v.slot === id).text = newText;
     console.log(events);
 
@@ -137,7 +137,7 @@ $(function () {
     var newText = $('textarea#10.description').val();
     console.log(newText);
 
-    const id = '10am';
+    const id = '10AM';
     events.find(v => v.slot === id).text = newText;
     console.log(events);
 
@@ -151,7 +151,7 @@ $(function () {
     var newText = $('textarea#11.description').val();
     console.log(newText);
 
-    const id = '11am';
+    const id = '11AM';
     events.find(v => v.slot === id).text = newText;
     console.log(events);
 
@@ -165,7 +165,7 @@ $(function () {
     var newText = $('textarea#12.description').val();
     console.log(newText);
 
-    const id = '12pm';
+    const id = '12PM';
     events.find(v => v.slot === id).text = newText;
     console.log(events);
 
@@ -179,7 +179,7 @@ $(function () {
     var newText = $('textarea#13.description').val();
     console.log(newText);
 
-    const id = '1pm';
+    const id = '1PM';
     events.find(v => v.slot === id).text = newText;
     console.log(events);
 
@@ -193,7 +193,7 @@ $(function () {
     var newText = $('textarea#14.description').val();
     console.log(newText);
 
-    const id = '2pm';
+    const id = '2PM';
     events.find(v => v.slot === id).text = newText;
     console.log(events);
 
@@ -207,7 +207,7 @@ $(function () {
     var newText = $('textarea#15.description').val();
     console.log(newText);
 
-    const id = '3pm';
+    const id = '3PM';
     events.find(v => v.slot === id).text = newText;
     console.log(events);
 
@@ -221,7 +221,7 @@ $(function () {
     var newText = $('textarea#16.description').val();
     console.log(newText);
 
-    const id = '4pm';
+    const id = '4PM';
     events.find(v => v.slot === id).text = newText;
     console.log(events);
 
@@ -235,7 +235,7 @@ $(function () {
     var newText = $('textarea#17.description').val();
     console.log(newText);
 
-    const id = '5pm';
+    const id = '5PM';
     events.find(v => v.slot === id).text = newText;
     console.log(events);
 
