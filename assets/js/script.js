@@ -94,6 +94,15 @@ $(function () {
   // Testing out with creating a separate listener for each button
   // !TODO: Create a concise loop for assigning this
 
+  /**
+   * First, will parse the existing events local storage object
+   * Then on a click from any save button
+   * Set the new text to the value found in the adjacent description input area
+   * Search data for the respective slot key, that corresponds to the text value that will be changed
+   * Set the value of that text key to the new text from the input area
+   * Store the updated events object to local storage
+   */
+
   events = JSON.parse(localStorage.getItem('events'));
 
   $("#0.saveBtn").click(function () {
@@ -103,76 +112,127 @@ $(function () {
     var newText = $('textarea#0.description').val();
     console.log(newText);
 
-    var oldText = events[0].text;
-    console.log(oldText);
-
     const id = '9am';
     events.find(v => v.slot === id).text = newText;
     console.log(events);
 
     localStorage.setItem('events', JSON.stringify(events));
-
-    // Find the correct entry and change the value
-
   });
-
-
 
   $("#1.saveBtn").click(function () {
     var btnID = $("#1").attr("id");
     console.log(btnID);
-    var text = $('textarea#1.description').val();
-    console.log(text);
+
+    var newText = $('textarea#1.description').val();
+    console.log(newText);
+
+    const id = '10am';
+    events.find(v => v.slot === id).text = newText;
+    console.log(events);
+
+    localStorage.setItem('events', JSON.stringify(events));
   });
 
   $("#2.saveBtn").click(function () {
-    var btnID = $("#2").attr("id");
+    var btnID = $("#3").attr("id");
     console.log(btnID);
-    var text = $('textarea#2.description').val();
-    console.log(text);
+
+    var newText = $('textarea#3.description').val();
+    console.log(newText);
+
+    const id = '11am';
+    events.find(v => v.slot === id).text = newText;
+    console.log(events);
+
+    localStorage.setItem('events', JSON.stringify(events));
   });
 
   $("#3.saveBtn").click(function () {
     var btnID = $("#3").attr("id");
     console.log(btnID);
-    var text = $('textarea#3.description').val();
-    console.log(text);
+
+    var newText = $('textarea#3.description').val();
+    console.log(newText);
+
+    const id = '12pm';
+    events.find(v => v.slot === id).text = newText;
+    console.log(events);
+
+    localStorage.setItem('events', JSON.stringify(events));
   });
 
   $("#4.saveBtn").click(function () {
     var btnID = $("#4").attr("id");
     console.log(btnID);
-    var text = $('textarea#4.description').val();
-    console.log(text);
+
+    var newText = $('textarea#4.description').val();
+    console.log(newText);
+
+    const id = '1pm';
+    events.find(v => v.slot === id).text = newText;
+    console.log(events);
+
+    localStorage.setItem('events', JSON.stringify(events));
   });
 
   $("#5.saveBtn").click(function () {
     var btnID = $("#5").attr("id");
     console.log(btnID);
-    var text = $('textarea#5.description').val();
-    console.log(text);
+
+    var newText = $('textarea#5.description').val();
+    console.log(newText);
+
+    const id = '2pm';
+    events.find(v => v.slot === id).text = newText;
+    console.log(events);
+
+    localStorage.setItem('events', JSON.stringify(events));
   });
 
   $("#6.saveBtn").click(function () {
     var btnID = $("#6").attr("id");
     console.log(btnID);
-    var text = $('textarea#6.description').val();
-    console.log(text);
+
+    var newText = $('textarea#6.description').val();
+    console.log(newText);
+
+    const id = '3pm';
+    events.find(v => v.slot === id).text = newText;
+    console.log(events);
+
+    localStorage.setItem('events', JSON.stringify(events));
   });
 
   $("#7.saveBtn").click(function () {
     var btnID = $("#7").attr("id");
     console.log(btnID);
-    var text = $('textarea#7.description').val();
-    console.log(text);
+
+    var newText = $('textarea#7.description').val();
+    console.log(newText);
+
+    const id = '4pm';
+    events.find(v => v.slot === id).text = newText;
+    console.log(events);
+
+    localStorage.setItem('events', JSON.stringify(events));
   });
 
   $("#8.saveBtn").click(function () {
     var btnID = $("#8").attr("id");
     console.log(btnID);
-    var text = $('textarea#8.description').val();
-    console.log(text);
+
+    var newText = $('textarea#8.description').val();
+    console.log(newText);
+
+    const id = '5pm';
+    events.find(v => v.slot === id).text = newText;
+    console.log(events);
+
+    localStorage.setItem('events', JSON.stringify(events));
   });
+
+  // Highlight the description area in the appropriate color based on the time of day
+
 
 }); // END ON PAGE LOAD FUNCTION
 
