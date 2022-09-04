@@ -8,23 +8,23 @@
 // Basic empty schedule
 initialEvents = [
   {
-    slot: "9am", text: "Nothing planned"
+    slot: "9AM", text: "Nothing planned"
   }, {
-    slot: "10am", text: "Nothing planned"
+    slot: "10AM", text: "Nothing planned"
   }, {
-    slot: "11am", text: "Nothing planned"
+    slot: "11AM", text: "Nothing planned"
   }, {
-    slot: "12pm", text: "Nothing planned"
+    slot: "12PM", text: "Nothing planned"
   }, {
-    slot: "1pm", text: "Nothing planned"
+    slot: "1PM", text: "Nothing planned"
   }, {
-    slot: "2pm", text: "Nothing planned"
+    slot: "2PM", text: "Nothing planned"
   }, {
-    slot: "3pm", text: "Nothing planned"
+    slot: "3PM", text: "Nothing planned"
   }, {
-    slot: "4pm", text: "Nothing planned"
+    slot: "4PM", text: "Nothing planned"
   }, {
-    slot: "5pm", text: "Nothing planned"
+    slot: "5PM", text: "Nothing planned"
   }
 ];
 
@@ -60,13 +60,15 @@ $(function () {
 
   console.log(events);
 
-  // Cycle through all current items in events and generate sections and divs with appropriate classes, ids and text content
+  // Cycle through all current items in events and generate sections and
+  // divs with appropriate classes, ids and text content based on the current events object
+
   jQuery.each(events, function (i, obj) {
 
     var sectionEl = $('<section>')
       .addClass("time-block col-12")
       .appendTo(containerEl)
-      .attr('id', i);
+      .attr('id', i+=9);
 
     var rowEl = $('<div>')
       .addClass("row")
@@ -91,6 +93,15 @@ $(function () {
       .attr('id', i)
   });
 
+  // Highlight the description area in the appropriate color based on the time of day
+  // Format the current time to match what shows in the hour column
+  // First calculate the current time in military time (# of hours)
+  var currentTime = moment().format('HH');
+  var timeDescription = $(".description")
+  console.log(currentTime);
+
+
+
   // Testing out with creating a separate listener for each button
   // !TODO: Create a concise loop for assigning this
 
@@ -105,11 +116,11 @@ $(function () {
 
   events = JSON.parse(localStorage.getItem('events'));
 
-  $("#0.saveBtn").click(function () {
-    var btnID = $("#0").attr("id");
+  $("#9.saveBtn").click(function () {
+    var btnID = $("#9").attr("id");
     console.log(btnID);
 
-    var newText = $('textarea#0.description').val();
+    var newText = $('textarea#9.description').val();
     console.log(newText);
 
     const id = '9am';
@@ -119,11 +130,11 @@ $(function () {
     localStorage.setItem('events', JSON.stringify(events));
   });
 
-  $("#1.saveBtn").click(function () {
-    var btnID = $("#1").attr("id");
+  $("#10.saveBtn").click(function () {
+    var btnID = $("#10").attr("id");
     console.log(btnID);
 
-    var newText = $('textarea#1.description').val();
+    var newText = $('textarea#10.description').val();
     console.log(newText);
 
     const id = '10am';
@@ -133,11 +144,11 @@ $(function () {
     localStorage.setItem('events', JSON.stringify(events));
   });
 
-  $("#2.saveBtn").click(function () {
-    var btnID = $("#3").attr("id");
+  $("#11.saveBtn").click(function () {
+    var btnID = $("#11").attr("id");
     console.log(btnID);
 
-    var newText = $('textarea#3.description').val();
+    var newText = $('textarea#11.description').val();
     console.log(newText);
 
     const id = '11am';
@@ -147,11 +158,11 @@ $(function () {
     localStorage.setItem('events', JSON.stringify(events));
   });
 
-  $("#3.saveBtn").click(function () {
-    var btnID = $("#3").attr("id");
+  $("#12.saveBtn").click(function () {
+    var btnID = $("#12").attr("id");
     console.log(btnID);
 
-    var newText = $('textarea#3.description').val();
+    var newText = $('textarea#12.description').val();
     console.log(newText);
 
     const id = '12pm';
@@ -161,11 +172,11 @@ $(function () {
     localStorage.setItem('events', JSON.stringify(events));
   });
 
-  $("#4.saveBtn").click(function () {
-    var btnID = $("#4").attr("id");
+  $("#13.saveBtn").click(function () {
+    var btnID = $("#13").attr("id");
     console.log(btnID);
 
-    var newText = $('textarea#4.description').val();
+    var newText = $('textarea#13.description').val();
     console.log(newText);
 
     const id = '1pm';
@@ -175,11 +186,11 @@ $(function () {
     localStorage.setItem('events', JSON.stringify(events));
   });
 
-  $("#5.saveBtn").click(function () {
-    var btnID = $("#5").attr("id");
+  $("#14.saveBtn").click(function () {
+    var btnID = $("#14").attr("id");
     console.log(btnID);
 
-    var newText = $('textarea#5.description').val();
+    var newText = $('textarea#14.description').val();
     console.log(newText);
 
     const id = '2pm';
@@ -189,11 +200,11 @@ $(function () {
     localStorage.setItem('events', JSON.stringify(events));
   });
 
-  $("#6.saveBtn").click(function () {
-    var btnID = $("#6").attr("id");
+  $("#15.saveBtn").click(function () {
+    var btnID = $("#15").attr("id");
     console.log(btnID);
 
-    var newText = $('textarea#6.description').val();
+    var newText = $('textarea#15.description').val();
     console.log(newText);
 
     const id = '3pm';
@@ -203,11 +214,11 @@ $(function () {
     localStorage.setItem('events', JSON.stringify(events));
   });
 
-  $("#7.saveBtn").click(function () {
-    var btnID = $("#7").attr("id");
+  $("#16.saveBtn").click(function () {
+    var btnID = $("#16").attr("id");
     console.log(btnID);
 
-    var newText = $('textarea#7.description').val();
+    var newText = $('textarea#16.description').val();
     console.log(newText);
 
     const id = '4pm';
@@ -217,11 +228,11 @@ $(function () {
     localStorage.setItem('events', JSON.stringify(events));
   });
 
-  $("#8.saveBtn").click(function () {
-    var btnID = $("#8").attr("id");
+  $("#17.saveBtn").click(function () {
+    var btnID = $("#17").attr("id");
     console.log(btnID);
 
-    var newText = $('textarea#8.description').val();
+    var newText = $('textarea#17.description').val();
     console.log(newText);
 
     const id = '5pm';
@@ -229,9 +240,13 @@ $(function () {
     console.log(events);
 
     localStorage.setItem('events', JSON.stringify(events));
+
+
+
   });
 
   // Highlight the description area in the appropriate color based on the time of day
+  var time = moment().format("hh:mm:ss");
 
 
 }); // END ON PAGE LOAD FUNCTION
